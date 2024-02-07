@@ -2,7 +2,7 @@
 variable "project_name" {
   description = "Project Name"
   type        = string
-  default = "eks-demo"
+  default = "demo"
 }
 variable "env_prefix" {
   description = "Environment Prefix"
