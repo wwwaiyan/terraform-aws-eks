@@ -22,4 +22,5 @@ module "eks" {
   eks_cluster_name = var.eks_cluster_name
   eks_cluster_version = var.eks_cluster_version
   nodegroup_instance_types = var.nodegroup_instance_types
+  eks_addon_name = var.eks_addon_name
 }

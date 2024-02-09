@@ -24,6 +24,11 @@ resource "aws_eks_cluster" "eks_cluster" {
     Environment = var.env_prefix
   }
 }
+resource "aws_eks_addon" "eks_addon" {
+  count = length(var.eks_addon_name) > 0 ? length(var.eks_addon_name) : 0
+  cluster_name = aws_eks_cluster.eks_cluster.name
+  addon_name   = var.eks_addon_name[count.index]
+}
 resource "aws_eks_node_group" "eks_node_group" {
   cluster_name    = aws_eks_cluster.eks_cluster.name
   node_group_name = "${var.project_name}-${var.env_prefix}-${var.eks_cluster_name}-node-group"

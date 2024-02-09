@@ -27,3 +27,9 @@ variable "nodegroup_instance_types" {
   description = "value of NodeGroup Instance Types"
   type = list
 }
+variable "eks_addon_name" {
+  # https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
+  description = "value of EKS Addon Name"
+  type = list(string)
+  default = []
+}
