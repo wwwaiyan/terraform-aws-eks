@@ -56,7 +56,7 @@ variable "eks_cluster_name" {
 variable "eks_cluster_version" {
   description = "value of EKS Cluster Version"
   type = string
-  default = "1.28"
+  default = "1.25"
 }
 variable "nodegroup_instance_types" {
   description = "value of NodeGroup Instance Types"
@@ -67,5 +67,5 @@ variable "eks_addon_name" {
   # https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
   description = "value of EKS Addon Name"
   type = list(string)
-  default = []
+  default = ["amazon-cloudwatch-observability"]
 }

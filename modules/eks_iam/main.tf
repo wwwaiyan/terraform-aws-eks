@@ -1,28 +1,23 @@
 # EKS Cluster role
-data "aws_iam_policy_document" "assume_role" {
-  statement {
-    effect = "Allow"
-
-    principals {
-      type        = "Service"
-      identifiers = ["eks.amazonaws.com"]
-    }
-
-    actions = ["sts:AssumeRole"]
-  }
-}
-
 resource "aws_iam_role" "eks_cluster_role" {
-  name               = "eks_cluster_role"
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+  name = "eks_cluster_role"
+
+  assume_role_policy = jsonencode({
+    Statement = [{
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
+      Principal = {
+        Service = "eks.amazonaws.com"
+      }
+    }]
+    Version = "2012-10-17"
+  })
 }
 
-resource "aws_iam_role_policy_attachment" "eks_cluster_AmazonEKSClusterPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.eks_cluster_role.name
-}
-resource "aws_iam_role_policy_attachment" "eks_cluster_AmazonEKSServicePolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+#policy_attachment
+resource "aws_iam_role_policy_attachment" "cluster_role_policy_attachment" {
+  count = length(var.cluster_role_policy_arns)
+  policy_arn = element(var.cluster_role_policy_arns, count.index)
   role       = aws_iam_role.eks_cluster_role.name
 }
 
@@ -41,23 +36,9 @@ resource "aws_iam_role" "eks_nodegroup_role" {
     Version = "2012-10-17"
   })
 }
-
-resource "aws_iam_role_policy_attachment" "eks_nodegroup-AmazonEKSWorkerNodePolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.eks_nodegroup_role.name
-}
-
-resource "aws_iam_role_policy_attachment" "eks_nodegroup-AmazonEKS_CNI_Policy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.eks_nodegroup_role.name
-}
-
-resource "aws_iam_role_policy_attachment" "eks_nodegroup-AmazonEBSCSIDriverPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-  role       = aws_iam_role.eks_nodegroup_role.name
-}
-
-resource "aws_iam_role_policy_attachment" "eks_nodegroup-AmazonEC2ContainerRegistryReadOnly" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+#policy_attachment
+resource "aws_iam_role_policy_attachment" "node_group_policy_attachment" {
+  count = length(var.node_group_role_policy_arns)
+  policy_arn = element(var.node_group_role_policy_arns,count.index)
   role       = aws_iam_role.eks_nodegroup_role.name
 }
