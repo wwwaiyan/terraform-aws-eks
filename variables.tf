@@ -64,8 +64,17 @@ variable "nodegroup_instance_types" {
   default     = ["t3.small"]
 }
 variable "eks_addon_name" {
-  # https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html
   description = "value of EKS Addon Name"
   type        = list(string)
   default     = ["amazon-cloudwatch-observability"]
+}
+variable "cluster_role_policy_arns" {
+  description = "Cluster Role Policy ARNs"
+  type        = list(string)
+  default     = []
+}
+variable "node_group_role_policy_arns" {
+  description = "Node Group Role Policy ARNs"
+  type        = list(string)
+  default     = ["arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicy"]
 }

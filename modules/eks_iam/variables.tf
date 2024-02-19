@@ -9,17 +9,10 @@ variable "env_prefix" {
 variable "cluster_role_policy_arns" {
   description = "Cluster Role Policy ARNs"
   type        = list(string)
-  default = [
-    "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
-    "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  ]
+  default = []
 }
-variable "default_node_group_role_policy_arns" {
+variable "node_group_role_policy_arns" {
   description = "Node Group Role Policy ARNs"
   type        = list(string)
-  default = [
-    "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
-    "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
-    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  ]
+  default = []
 }

@@ -14,13 +14,15 @@ locals {
   eks_subnets = concat(module.vpc.private_subnet_ids, module.vpc.public_subnet_ids)
 }
 module "eks" {
-  source                   = "./modules/wy_eks"
-  project_name             = var.project_name
-  env_prefix               = var.env_prefix
-  eks_cluster_subnets      = local.eks_subnets
-  eks_nodegroup_subnets    = local.eks_subnets
-  eks_cluster_name         = var.eks_cluster_name
-  eks_cluster_version      = var.eks_cluster_version
-  nodegroup_instance_types = var.nodegroup_instance_types
-  eks_addon_name           = var.eks_addon_name
+  source                      = "./modules/wy_eks"
+  project_name                = var.project_name
+  env_prefix                  = var.env_prefix
+  eks_cluster_subnets         = local.eks_subnets
+  eks_nodegroup_subnets       = local.eks_subnets
+  eks_cluster_name            = var.eks_cluster_name
+  eks_cluster_version         = var.eks_cluster_version
+  nodegroup_instance_types    = var.nodegroup_instance_types
+  eks_addon_name              = var.eks_addon_name
+  cluster_role_policy_arns    = var.cluster_role_policy_arns
+  node_group_role_policy_arns = var.node_group_role_policy_arns
 }

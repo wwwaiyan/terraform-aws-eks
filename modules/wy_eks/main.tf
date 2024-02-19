@@ -1,9 +1,15 @@
+locals {
+  cluster_role_policy_arns    = concat(var.cluster_role_policy_arns, var.default_cluster_role_policy_arns)
+  node_group_role_policy_arns = concat(var.node_group_role_policy_arns, var.default_node_group_role_policy_arns)
+  # cluster_role_policy_arns = length(var.cluster_role_policy_arns) > 0 ? var.cluster_role_policy_arns : var.default_cluster_role_policy_arns
+  # node_group_role_policy_arns = length(var.node_group_role_policy_arns) > 0 ? var.node_group_role_policy_arns : var.default_node_group_role_policy_arns
+}
 module "eks_iam" {
   source                      = "../eks_iam"
   project_name                = var.project_name
   env_prefix                  = var.env_prefix
-  cluster_role_policy_arns    = var.cluster_role_policy_arns
-  node_group_role_policy_arns = var.node_group_role_policy_arns
+  cluster_role_policy_arns    = local.cluster_role_policy_arns
+  node_group_role_policy_arns = local.node_group_role_policy_arns
 }
 resource "aws_eks_cluster" "eks_cluster" {
   name     = "${var.project_name}-${var.env_prefix}-${var.eks_cluster_name}"
