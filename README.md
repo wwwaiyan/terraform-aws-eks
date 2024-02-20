@@ -88,8 +88,10 @@ In this case, EKS Cluster Creation with root module
 
 ## screenshots: 
 
-![image](./screenshots/eks-outputs.png)  
-![image](./screenshots/eks-outputs.png)  
+![image](./screenshots/eks-terraform-state-list.png)  
+![image](./screenshots/eks_terraform-output_kubectl.png)  
 
+### 3. Cleanup your resources.  
+Run `terraform destroy` command.  
 
-<p align="center">Happy Coding... 😊😊</p>
+<H3 align="center">Happy Coding! Happy Clustering... 🌟🚀😊</H3>
