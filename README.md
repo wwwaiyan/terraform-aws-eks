@@ -58,23 +58,25 @@ module location: [modules/wy_eks](modules/wy_eks)
 | cluster_role_policy_arns |(optional) if you need to add other additional **policy** [learn more](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/policy-list.html)|
 | node_group_role_policy_arns |(optional) if you need to add other additional **policy** [learn more](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/policy-list.html)|  
 
->**📝eks add_on note📝**  
->📝`eks_addon_name`: By default, the add on will not be added.If you neeed to add add_on you can follow as below steps  
->For example `eks_addon_name = "aws-ebs-csi-driver"`  
->Learn More about [Amazon EKS add-ons](https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html)  
->Can adjust values in `main.tf` or `variable.tf`  
+**📝eks add_on note**`eks_addon_name`  
+By default, the add on will not be added.If you neeed to add add_on you can follow as below steps  
+For example `eks_addon_name = "aws-ebs-csi-driver"`  
+Can adjust values in `main.tf` or `variable.tf`  
+Learn More about [Amazon EKS add-ons](https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html)  
 
->**📝eks iam_policy note📝**  
->📝`cluster_role_policy_arns` and `node_group_role_policy_arns`: 
->By default, eks  required policy will be added [learn more  required policy](https://docs.aws.amazon.com/eks/latest/userguide/using-service-linked-roles.html).  
->if you need to add other additional policy, you can follow as below steps   
->For example `node_group_role_policy_arns = "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicy"`  
->Learn More about [AWS managed policies list](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/policy-list.html)
->Can adjust values in `main.tf` or `variable.tf`
+**📝eks iam_policy note**`cluster_role_policy_arns` and `node_group_role_policy_arns`     
+By default, eks  required policy will be added [learn more  required policy](https://docs.aws.amazon.com/eks/latest/userguide/using-service-linked-roles.html).  
+if you need to add other additional policy, you can follow as below steps   
+For example `node_group_role_policy_arns = "arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicy"`  
+Can adjust values in `main.tf` or `variable.tf`  
+Learn More about [AWS managed policies list](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/policy-list.html)
 
 ## Output
-- all of vpc attributes
-- all of public subnets ids
-- all of private subnets ids
+ - eks_cluster_name
+ - eks_cluster_status
+ - eks_cluster_endpoint
+ - eks_cluster_created_at
+ - eks_node_group_name
+ - eks_node_group_status
 
 > Can adjust input and output values in `variable.tf` and `output.tf`

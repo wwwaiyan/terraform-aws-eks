@@ -9,10 +9,10 @@ variable "env_prefix" {
 variable "cluster_role_policy_arns" {
   description = "Cluster Role Policy ARNs"
   type        = list(string)
-  default = []
+  default     = []
 }
 variable "node_group_role_policy_arns" {
   description = "Node Group Role Policy ARNs"
   type        = list(string)
-  default = []
+  default     = []
 }
