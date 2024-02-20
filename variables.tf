@@ -66,7 +66,7 @@ variable "nodegroup_instance_types" {
 variable "eks_addon_name" {
   description = "value of EKS Addon Name"
   type        = list(string)
-  default     = ["amazon-cloudwatch-observability"]
+  default     = ["aws-ebs-csi-driver"]
 }
 variable "cluster_role_policy_arns" {
   description = "Cluster Role Policy ARNs"
