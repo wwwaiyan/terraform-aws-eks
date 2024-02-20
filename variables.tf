@@ -56,7 +56,7 @@ variable "eks_cluster_name" {
 variable "eks_cluster_version" {
   description = "value of EKS Cluster Version"
   type        = string
-  default     = "1.25"
+  default     = "1.28"
 }
 variable "nodegroup_instance_types" {
   description = "value of NodeGroup Instance Types"
@@ -76,5 +76,5 @@ variable "cluster_role_policy_arns" {
 variable "node_group_role_policy_arns" {
   description = "Node Group Role Policy ARNs"
   type        = list(string)
-  default     = ["arn:aws:iam::aws:policy/AmazonEBSCSIDriverPolicy"]
+  default     = ["arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"]
 }
