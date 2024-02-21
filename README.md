@@ -1,4 +1,4 @@
-<h2 align="center"> terraform-aws-eks</h2>
+<h2 align="center">terraform-aws-eks🚀</h2>
 <p align="center">This repo is created for eks cluster setup with managed node group.  </p>
 
 >💡 “Note: This project is intended for lab testing purposes, not for production. Additionally, it focuses on creating the cluster and does not cover cluster auto-scaling at this stage.”   
