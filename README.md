@@ -79,6 +79,9 @@ module "eks" {
 ```  
 can edit the values in `variable.tf` or `main.tf`  
 ### 2. Run `terraform init` and `terraform apply` Command  
+```
+terraform init && terraform apply
+```
 we can check terraform state with `terraform state list` command  
 
 In this case, EKS Cluster Creation with root module  
