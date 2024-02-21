@@ -73,9 +73,9 @@ module "eks" {
   node_group_role_policy_arns = var.node_group_role_policy_arns
 }
 ```  
-### 1. Clone the repo  
+### 1. Clone the repo and Go to the module directory 
 ```
-git clone https://github.com/wwwaiyan/terraform-aws-eks.git
+ git clone https://github.com/wwwaiyan/terraform-aws-eks.git && cd terraform-aws-eks
 ```  
 can edit the values in `variable.tf` or `main.tf`  
 ### 2. Run `terraform init` and `terraform apply` Command  
