@@ -73,7 +73,7 @@ module "eks" {
   node_group_role_policy_arns = var.node_group_role_policy_arns
 }
 ```  
-### 1. Clone the repo and Go to the module directory 
+### 1. Clone the module repository
 ```
  git clone https://github.com/wwwaiyan/terraform-aws-eks.git && cd terraform-aws-eks
 ```  
