@@ -84,7 +84,7 @@ terraform init && terraform apply
 ```
 we can check terraform state with `terraform state list` command  
 
-In this case, EKS Cluster Creation with root module  
+In this case, the EKS cluster is created using the root module, which includes the following resources:    
 ✔️ Created VPC and subnets for EKS Cluster - [terraform-aws-vpc](https://github.com/wwwaiyan/terraform-aws-vpc)  
 ✔️ Created EKS Cluster with managed node group  
 ✔️ Added cluster context in default kubeconfig (ready to use `kubectl`)
